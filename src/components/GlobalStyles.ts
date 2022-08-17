@@ -1,14 +1,18 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   *, *:before, *:after {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
   }
+  :root {
+    --bg: #222;
+    --text: #fff;
+  }
   html {
-    background: #222;
-    color: #fff;
+    background: var(--bg);
+    color: var(--text);
   }
   body, html, #root {
     width: 100%;
@@ -16,13 +20,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-function App() {
-  return (
-    <div className="App">
-      <GlobalStyle />
-      Hey
-    </div>
-  );
-}
-
-export default App;
+export default GlobalStyles;
