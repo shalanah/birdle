@@ -18,6 +18,16 @@ export const keysArray = keys.map((row) => row.split(""));
 keysArray[2].unshift("enter");
 keysArray[2].push("delete");
 
+export const getIndexes = (arr: any[], item: any) => {
+  const indexes: number[] = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === item) {
+      indexes.push(i);
+    }
+  }
+  return indexes;
+};
+
 export const getLetterStatusWord = (
   letter: string,
   actual: string[],
@@ -35,15 +45,24 @@ export const getLetterStatusKeyboard = (
   actual: string[],
   letter: string
 ) => {
-  // Not used?
-  for (const attempt of attempts) {
-    if (!attempt.split("").includes(letter)) return "normal";
-    else if (!actual.includes(letter)) return "incorrect";
-    else return "correct";
+  let status = "normal"; // default
+
+  for (const a of attempts) {
+    const attempt = a.split("");
+    if (!attempt.includes(letter)) continue; // letter not found in attempt
+    if (!actual.includes(letter)) return "incorrect";
+
+    // Letters can be in multiple places in a word, want to check if any are correct
+    const actualIndexes = getIndexes(actual, letter);
+    const attemptIndexes = getIndexes(attempt, letter);
+    let sharesAnIndex = actualIndexes.some((index) =>
+      attemptIndexes.includes(index)
+    );
+    if (sharesAnIndex) return "correct";
+
+    // Otherwise it exists but in the incorrect place - could be correct in another attempt
+    status = "offcenter";
   }
-  return "correct";
-  // if (letter === actual[index]) return "correct";
-  // if ([...actual.slice(0, index), ...actual.slice(index + 1)].includes(letter))
-  //   return "offcenter";
-  // else return "incorrect";
+
+  return status;
 };

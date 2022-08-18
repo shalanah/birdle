@@ -21,9 +21,7 @@ function Word({ guess = "", actual }: { guess: string; actual?: string[] }) {
         const status = actual
           ? getLetterStatusWord(letter, actual, i)
           : "normal";
-        return (
-          <Letter key={`${i}-${letters[i]}`} letter={letter} status={status} />
-        );
+        return <Letter key={i} letter={letter} status={status} />;
       })}
     </div>
   );

@@ -10,7 +10,7 @@ const Btn = styled.button`
   color: #fff;
   text-transform: uppercase;
   border-radius: 4px;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: bold;
   transition: 0.2s;
 `;

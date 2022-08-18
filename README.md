@@ -4,6 +4,12 @@
 
 - First time using VITE
 - First time using React + TS (used each alone before)
+- Goal to make it hard - on first glance - to notice the difference in apps
+
+## Future work
+
+- Add localstorage or cookies to track and show progress
+- Build out rest of UI around game
 
 ## Investigation
 

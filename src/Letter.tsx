@@ -12,6 +12,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.2s;
 `;
 
 function Letter({
@@ -24,7 +25,10 @@ function Letter({
   return (
     <Container
       style={{
-        border: status === "normal" ? `2px solid #3a3a3c` : "",
+        border:
+          status === "normal"
+            ? `2px solid ${letter ? "#565758" : "#3a3a3c"}`
+            : "",
         background: bg[status],
       }}
     >

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GlobalStyles from "./GlobalStyles";
 import { useState } from "react";
 import Keyboard from "./Keyboard";
@@ -6,7 +6,6 @@ import { maxAttempts } from "./utils";
 import Game from "./Game";
 
 const letters = "abcdefghijklmnopqrstuvwxyz".split("");
-
 const todaysWord = "grant";
 
 // TODO: Use grid layout instead of flexbox?
@@ -16,7 +15,7 @@ function App() {
   const [current, setCurrent] = useState("tra");
 
   // TODO: Use for keydown event
-  const onKeyDown = (key: string) => {
+  const onKey = (key: string) => {
     // TODO: Don't allow if max attempts reached
     if (letters.includes(key) && current.length < todaysWord.length) {
       setCurrent(current + key);
@@ -34,13 +33,23 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const onKeyUp = (e: KeyboardEvent) => {
+      onKey(e.key.toLowerCase());
+    };
+    window.addEventListener("keyup", onKeyUp);
+    return () => {
+      window.removeEventListener("keyup", onKeyUp);
+    };
+  }, [onKey]); // Empty array ensures that effect is only run on mount and unmount
+
   if (attempts.length >= maxAttempts) return <div>Game Over</div>;
   const actual = todaysWord.split("");
   return (
     <>
       <GlobalStyles />
       <Game attempts={attempts} current={current} actual={actual} />
-      <Keyboard attempts={attempts} actual={actual} onKeyDown={onKeyDown} />
+      <Keyboard attempts={attempts} actual={actual} onKeyDown={onKey} />
     </>
   );
 }
