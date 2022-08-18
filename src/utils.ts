@@ -6,6 +6,12 @@ export const bg = {
   offcenter: "#b59f3b",
   incorrect: "#3a3a3c",
 };
+export const bgKeyboard = {
+  normal: "#818384",
+  correct: "#6aaa64",
+  offcenter: "#b59f3b",
+  incorrect: "#3a3a3c",
+};
 
 const keys = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 export const keysArray = keys.map((row) => row.split(""));

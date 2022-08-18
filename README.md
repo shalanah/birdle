@@ -1,4 +1,11 @@
-Notes:
+# Wordle Clone Challenge
+
+## Notes
+
+- First time using VITE
+- First time using React + TS (used each alone before)
+
+## Investigation
 
 Redux store of real wordle - maybe helps maybe not!
 

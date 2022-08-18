@@ -1,5 +1,5 @@
 import React from "react";
-import { getLetterStatusKeyboard, bg, keysArray } from "./utils";
+import { getLetterStatusKeyboard, bgKeyboard, keysArray } from "./utils";
 import styled from "styled-components";
 
 const Btn = styled.button`
@@ -7,21 +7,32 @@ const Btn = styled.button`
   width: 43px;
   height: 58px;
   color: #fff;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
 `;
 
 function Keyboard({ attempts, actual }) {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        marginTop: 30,
+        gap: 8,
+      }}
+    >
       {keysArray.map((row, i) => {
         return (
-          <div key={i}>
+          <div key={i} style={{ margin: "0 auto", display: "flex", gap: 6 }}>
             {row.map((letter) => {
               const status = getLetterStatusKeyboard(attempts, actual, letter);
               return (
                 <Btn
                   key={letter}
                   style={{
-                    background: bg[status],
+                    background: bgKeyboard[status],
                   }}
                 >
                   {letter}
