@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { bg, getLetterStatusWord } from "./utils";
 
 const Container = styled.div`
   border-radius: 4px;
@@ -12,31 +13,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
-export const getLetterStatus = (
-  letter: string,
-  actual: string[],
-  index: number
-) => {
-  console.log({
-    letter,
-    actual,
-    index,
-    left: [...actual.slice(0, index), ...actual.slice(index + 1)],
-  });
-  if (letter === "") return "normal";
-  if (letter === actual[index]) return "correct";
-  if ([...actual.slice(0, index), ...actual.slice(index + 1)].includes(letter))
-    return "offcenter";
-  else return "incorrect";
-};
-
-const bg = {
-  normal: "#121213",
-  correct: "#6aaa64",
-  offcenter: "#b59f3b",
-  incorrect: "#3a3a3c",
-};
 
 function Letter({
   letter = "",
