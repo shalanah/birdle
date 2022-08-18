@@ -4,17 +4,27 @@ import { useState } from "react";
 import Keyboard from "./Keyboard";
 import { maxAttempts } from "./utils";
 import Game from "./Game";
+import styled from "styled-components";
+
+const Nav = styled.header`
+  height: 66px;
+  border-bottom: 1px solid #3a3a3c;
+`;
+const Main = styled.main`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 const todaysWord = "grant";
 
-// TODO: Use grid layout instead of flexbox?
 // TODO: Put attempts, current into context?
 function App() {
   const [attempts, setAttempts] = useState(["pairs", "grain"]);
   const [current, setCurrent] = useState("tra");
 
-  // TODO: Use for keydown event
+  // TODO: Look into ways to avoid using current in here...
   const onKey = (key: string) => {
     // TODO: Don't allow if max attempts reached
     if (letters.includes(key) && current.length < todaysWord.length) {
@@ -48,8 +58,11 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Game attempts={attempts} current={current} actual={actual} />
-      <Keyboard attempts={attempts} actual={actual} onKeyDown={onKey} />
+      <Main>
+        <Nav />
+        <Game attempts={attempts} current={current} actual={actual} />
+        <Keyboard attempts={attempts} actual={actual} onKeyDown={onKey} />
+      </Main>
     </>
   );
 }

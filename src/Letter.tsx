@@ -11,7 +11,29 @@ const Bounce = keyframes`
   }
 `;
 
+const Spin = keyframes`
+  0% {
+    transform: rotateZ(0);
+    background: ${bg.normal};
+    border-color: #565758;
+  }
+  49.99999% {
+    background: ${bg.normal};
+    border-color: #565758;
+  }
+  50% {
+    background: var(--bg);
+    transform: rotateX(90deg);
+  }
+  100% {
+    border-color: transparent;
+    background: var(--bg);
+    transform: rotateZ(0deg);
+  }
+`;
+
 const Container = styled.div`
+  border: 2px solid transparent;
   border-radius: 4px;
   text-transform: uppercase;
   font-weight: bold;
@@ -21,11 +43,18 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.2s;
+  transition: 0.2s border;
+  ${({ animateIn, index }) =>
+    animateIn
+      ? css`
+          animation: ${Spin} 0.5s both ease-in-out;
+          animation-delay: ${index * 0.1}s;
+        `
+      : ""};
   ${({ entered }: { entered: boolean }) =>
     entered
       ? css`
-          animation: ${Bounce} 0.1s both ease-in-out;
+          animation: ${Bounce} 0.1s both ease-out;
         `
       : ""}
 `;
@@ -33,19 +62,19 @@ const Container = styled.div`
 function Letter({
   letter = "",
   status = "normal",
-}: {
-  letter: string;
-  status: string;
+  animateIn = false,
+  index = 0,
 }) {
   return (
     <Container
+      index={index}
+      animateIn={animateIn}
       entered={letter !== "" && status === "normal"}
       style={{
-        border:
-          status === "normal"
-            ? `2px solid ${letter ? "#565758" : "#3a3a3c"}`
-            : "",
-        background: bg[status],
+        borderColor:
+          status === "normal" ? (letter ? "#565758" : "#3a3a3c") : "",
+        background: bg.normal,
+        "--bg": bg[status],
       }}
     >
       {letter}

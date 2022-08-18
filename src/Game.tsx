@@ -7,7 +7,7 @@ const WordsContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   gap: 5px;
-  margin: 10px auto;
+  margin: auto;
 `;
 
 const emptyWord = Array(wordLength).fill("");
@@ -21,7 +21,15 @@ function Word({ guess = "", actual }: { guess: string; actual?: string[] }) {
         const status = actual
           ? getLetterStatusWord(letter, actual, i)
           : "normal";
-        return <Letter key={i} letter={letter} status={status} />;
+        return (
+          <Letter
+            key={i}
+            letter={letter}
+            status={status}
+            animateIn={!!actual}
+            index={i}
+          />
+        );
       })}
     </div>
   );
@@ -31,7 +39,7 @@ function Game({ attempts, current, actual }) {
   const len = attempts.length;
   const attemptsLeft = maxAttempts - len - 1;
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", flex: 1 }}>
       <WordsContainer>
         {/* 1. Attempts */}
         {attempts.map((guess, i) => (

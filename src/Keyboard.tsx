@@ -10,7 +10,7 @@ const Btn = styled.button`
   color: #fff;
   text-transform: uppercase;
   border-radius: 4px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   transition: 0.2s;
 `;
@@ -31,6 +31,7 @@ function Keyboard({
         flexDirection: "column",
         marginTop: 30,
         gap: 8,
+        marginBottom: 8,
       }}
     >
       {keysArray.map((row, i) => {
