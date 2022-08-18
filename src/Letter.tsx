@@ -1,6 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { bg } from "./utils";
+
+const Bounce = keyframes`
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
 
 const Container = styled.div`
   border-radius: 4px;
@@ -13,6 +22,12 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   transition: 0.2s;
+  ${({ entered }: { entered: boolean }) =>
+    entered
+      ? css`
+          animation: ${Bounce} 0.1s both ease-in-out;
+        `
+      : ""}
 `;
 
 function Letter({
@@ -24,6 +39,7 @@ function Letter({
 }) {
   return (
     <Container
+      entered={letter !== "" && status === "normal"}
       style={{
         border:
           status === "normal"

@@ -10,6 +10,7 @@
 
 - Add localstorage or cookies to track and show progress
 - Build out rest of UI around game
+- Make responsive
 
 ## Investigation
 
