@@ -7,8 +7,12 @@ import Game from "./Game";
 import styled from "styled-components";
 
 const Nav = styled.header`
+  font-family: Kurale, sans-serif;
   height: 66px;
   border-bottom: 1px solid #3a3a3c;
+  display: flex;
+  font-size: 18px;
+  line-height: 1;
 `;
 const Main = styled.main`
   height: 100%;
@@ -59,7 +63,9 @@ function App() {
     <>
       <GlobalStyles />
       <Main>
-        <Nav />
+        <Nav>
+          <h1 style={{ margin: "auto" }}>Wordley</h1>
+        </Nav>
         <Game attempts={attempts} current={current} actual={actual} />
         <Keyboard attempts={attempts} actual={actual} onKeyDown={onKey} />
       </Main>

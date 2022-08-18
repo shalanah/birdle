@@ -6,14 +6,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0px;
     padding: 0px;
   }
-  :root {
-    --bg: #121213;
-    --text: #fff;
-  }
   html {
     font-family: sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    background: #121213;
+    color: #fff;
   }
   body, html, #root {
     width: 100%;
