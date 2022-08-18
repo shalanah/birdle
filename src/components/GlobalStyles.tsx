@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0px;
   }
   :root {
-    --bg: #222;
+    --bg: #121213;
     --text: #fff;
   }
   html {

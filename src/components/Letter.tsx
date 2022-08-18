@@ -1,4 +1,17 @@
 import React from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 62px;
+  height: 62px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const getLetterStatus = (
   letter: string,
@@ -33,21 +46,14 @@ function Letter({
   status: string;
 }) {
   return (
-    <div
+    <Container
       style={{
-        textTransform: "uppercase",
-        fontWeight: "bold",
-        width: 62,
-        height: 62,
-        fontSize: "32px",
+        border: status === "normal" ? `2px solid #3a3a3c` : "",
         background: bg[status],
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
       }}
     >
       {letter}
-    </div>
+    </Container>
   );
 }
 

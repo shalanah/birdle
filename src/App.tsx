@@ -13,11 +13,9 @@ const WordsContainer = styled.div`
 
 const todaysWord = "grant";
 const maxAttempts = 6;
-const wordLenth = 5;
+const wordLength = 5;
+const emptyWord = Array(wordLength).fill("");
 
-const emptyWord = Array(wordLenth).fill("");
-
-// TODO: A letter comp
 function Word({ guess = "", actual }: { guess: string; actual?: string[] }) {
   const letters = guess.split("");
   return (
@@ -59,6 +57,7 @@ function App() {
           {/* TODO: Keyboard */}
         </WordsContainer>
       </div>
+      <div></div>
     </>
   );
 }
