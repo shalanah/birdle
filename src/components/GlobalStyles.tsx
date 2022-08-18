@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
     --text: #fff;
   }
   html {
+    font-family: sans-serif;
     background: var(--bg);
     color: var(--text);
   }
