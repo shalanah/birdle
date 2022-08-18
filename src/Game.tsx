@@ -10,6 +10,7 @@ const WordsContainer = styled.div`
   margin: auto;
 `;
 
+// Empty word doesn't seem necessary... just an array of 5 will do
 const emptyWord = Array(wordLength).fill("");
 
 function Word({ guess = "", actual }: { guess: string; actual?: string[] }) {

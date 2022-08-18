@@ -51,7 +51,7 @@ function App() {
     return () => {
       window.removeEventListener("keyup", onKeyUp);
     };
-  }, [onKey]); // Empty array ensures that effect is only run on mount and unmount
+  }, [onKey]);
 
   if (attempts.length >= maxAttempts) return <div>Game Over</div>;
   const actual = todaysWord.split("");
