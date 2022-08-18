@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { bg, getLetterStatusWord } from "./utils";
+import { bg } from "./utils";
 
 const Container = styled.div`
   border-radius: 4px;

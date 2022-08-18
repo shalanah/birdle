@@ -13,7 +13,7 @@ export const bgKeyboard = {
   incorrect: "#3a3a3c",
 };
 
-const keys = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+export const keys = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 export const keysArray = keys.map((row) => row.split(""));
 keysArray[2].unshift("enter");
 keysArray[2].push("delete");

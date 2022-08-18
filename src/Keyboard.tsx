@@ -4,16 +4,26 @@ import styled from "styled-components";
 
 const Btn = styled.button`
   border: none;
-  width: 43px;
+  padding: 0 10px;
+  min-width: 43px;
   height: 58px;
   color: #fff;
   text-transform: uppercase;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: bold;
+  transition: 0.2s;
 `;
 
-function Keyboard({ attempts, actual }) {
+function Keyboard({
+  attempts,
+  actual,
+  onKeyDown,
+}: {
+  attempts: string[];
+  actual: string[];
+  onKeyDown: (key: string) => void;
+}) {
   return (
     <div
       style={{
@@ -30,6 +40,7 @@ function Keyboard({ attempts, actual }) {
               const status = getLetterStatusKeyboard(attempts, actual, letter);
               return (
                 <Btn
+                  onClick={() => onKeyDown(letter)}
                   key={letter}
                   style={{
                     background: bgKeyboard[status],
