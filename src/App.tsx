@@ -7,7 +7,7 @@ import styled from "styled-components";
 const WordsContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   margin: 10px auto;
 `;
 

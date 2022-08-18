@@ -32,12 +32,14 @@ function Letter({
   letter: string;
   status: string;
 }) {
-  console.log(letter, status);
   return (
     <div
       style={{
-        width: 40,
-        height: 40,
+        textTransform: "uppercase",
+        fontWeight: "bold",
+        width: 62,
+        height: 62,
+        fontSize: "32px",
         background: bg[status],
         display: "flex",
         alignItems: "center",
