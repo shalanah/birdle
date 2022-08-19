@@ -29,7 +29,7 @@ export const congrats = [
   "You're a bird-brainiac!",
   "We're birds of a feather!",
   "Birds like you ❤️",
-  "Well-done, and with a guess to spare!",
+  "Well-done!",
   "Whew... that was a close one!",
 ];
 
@@ -62,16 +62,35 @@ export const getTodaysWord = (wordList: { name: string; wiki: string }[]) => {
 };
 
 export const getLetterStatusWord = (
-  letter: string,
+  word: string[],
   actual: string[],
   index: number
 ) => {
-  if (letter === "") return "normal";
+  const letter = word[index];
+  if (letter === "") return "normal"; // empty
+  if (!actual.includes(letter)) return "incorrect";
   if (letter === actual[index]) return "correct";
-  // TODO: fix offcenter
-  if ([...actual.slice(0, index), ...actual.slice(index + 1)].includes(letter))
-    return "offcenter";
-  else return "incorrect";
+
+  const actualIndexes = getIndexes(actual, letter);
+  const attemptIndexes = getIndexes(word, letter);
+  if (attemptIndexes.length <= actualIndexes.length) {
+    return "offcenter"; // Correct letter wrong position and not too many of this letter in guess
+  }
+
+  // Dealing with excess of this letter in guess
+  // - Removing letters that are in correct positions to compare
+  // - NOTE: actualIndexes + attemptIndexes get mutated below
+  // - NOTE: could pull in lodash to help with this
+  for (let i = 0; i < actualIndexes.length; i++) {
+    const overlap = attemptIndexes.indexOf(actualIndexes[i]);
+    if (overlap !== -1) {
+      attemptIndexes.splice(overlap, 1);
+      actualIndexes.splice(i, 1);
+    }
+  }
+  return attemptIndexes.indexOf(index) > actualIndexes.length - 1
+    ? "incorrect" // Too many of this letter in our guess
+    : "offcenter";
 };
 
 export const getLetterStatusKeyboard = (

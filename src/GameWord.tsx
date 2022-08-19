@@ -50,7 +50,7 @@ function GameWord({
       {emptyWord.map((_, i) => {
         const letter = letters[i] || "";
         const status = actual
-          ? getLetterStatusWord(letter, actual, i)
+          ? getLetterStatusWord(letters, actual, i)
           : "normal";
         return (
           <Letter
