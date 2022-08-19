@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import Modal from "./Modal";
 import Birds from "./assets/Birds";
-import { getRandomFromArray } from "./utils";
+import { getRandomFromArray, congrats, fail } from "./utils";
 
 const Shared = ({
   todaysWord,
@@ -69,15 +69,6 @@ const Shared = ({
   );
 };
 
-// Ordered
-const congrats = [
-  "OMG! Outstanding!",
-  "You're a bird-brainiac!",
-  "We're birds of a feather!",
-  "Birds like you ❤️",
-  "Well-done, and with a guess to spare!",
-  "Whew... that was a close one!",
-];
 export const ModalSuccess = ({
   todaysWord = "",
   guessCount = 6,
@@ -103,15 +94,6 @@ export const ModalSuccess = ({
   );
 };
 
-const fail = [
-  "Not this time...",
-  "That's tough.",
-  "Looks like you came up empty this time",
-  "You'll get it next time",
-  "It's the lows in life that make the highs so great",
-  "Making mistakes is how we grow",
-  "I feel like you got this, tomorrow",
-];
 export const ModalFail = ({
   todaysWord,
   wiki,

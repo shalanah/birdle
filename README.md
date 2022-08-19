@@ -1,26 +1,21 @@
-# Wordle Clone Challenge - Birdle
+# Birdle
 
-## Prompt
-
-You can implement as close to the real UI as you want (preferably adding your own signature), but the key is to maintain the core functionality:
-
-1. There must be one word per day.
-2. A user can only guess six times, after which the word will be revealed.
-3. Letters within a guess should be distinctly highlighted after a guess based on these groups: letters matching exact position in the target word, letters included in the target word (but in incorrect position) and letters not included in the target word.
+Use five letter words to guess the bird of the day. (for-fun wordle clone)
 
 ## Video
 
-TODO: Put video link here
+TODO: Put video here
 
-## Other Notes
+## Fun firsts
 
 - First time using VITE, React + TS (together), and finally got around to using SVGR for the first time
 
-## Future work
+## Possible future improvements
 
-- Add localstorage or cookies to track and show progress
-- Build out rest of UI around game (tracking streaks etc)
+- Add to localstorage with track daily progress
+- Build out rest of UI around game (tracking, streaks, about, github link etc)
 - Make responsive
+- Update color scheme to be more bird friendly
 
 ## Investigation
 

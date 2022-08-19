@@ -13,6 +13,26 @@ export const bgKeyboard = {
   incorrect: "#3a3a3c",
 };
 
+export const fail = [
+  "Not this time...",
+  "That's tough.",
+  "Looks like you came up empty this time",
+  "You'll get it next time",
+  "It's the lows in life that make the highs so great",
+  "Making mistakes is how we grow",
+  "I feel like you got this, tomorrow",
+];
+
+// Ordered
+export const congrats = [
+  "OMG! Outstanding!",
+  "You're a bird-brainiac!",
+  "We're birds of a feather!",
+  "Birds like you ❤️",
+  "Well-done, and with a guess to spare!",
+  "Whew... that was a close one!",
+];
+
 export const getRandomFromArray = (arr: any[]) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
