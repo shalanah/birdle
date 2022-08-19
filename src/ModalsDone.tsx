@@ -69,6 +69,7 @@ const Shared = ({
   );
 };
 
+// Ordered
 const congrats = [
   "OMG! Outstanding!",
   "You're a bird-brainiac!",
@@ -108,14 +109,15 @@ const fail = [
   "Looks like you came up empty this time",
   "You'll get it next time",
   "It's the lows in life that make the highs so great",
-  "Making mistakes is okay",
+  "Making mistakes is how we grow",
+  "I feel like you got this, tomorrow",
 ];
 export const ModalFail = ({
   todaysWord,
   wiki,
 }: {
-  todaysWord: "string";
-  wiki: "sting";
+  todaysWord: string;
+  wiki: string;
 }) => {
   return (
     <Modal delay={2000}>
