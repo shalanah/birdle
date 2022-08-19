@@ -17,6 +17,11 @@ const GlobalStyles = createGlobalStyle`
   }
   a, button {
     cursor: pointer;
+    background: transparent;
+    border: none;
+    /* &:not(:focus-visible) {
+      outline: none !important;
+    } */
   }
 `;
 

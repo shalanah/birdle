@@ -32,13 +32,24 @@ const Background = styled.div`
   animation: ${fadeIn} 0.3s ease-in-out;
 `;
 const Container = styled.div`
-  background: #fff;
+  position: relative;
   padding: 20px 15px 25px;
-  border-radius: 15px;
   color: #222;
   margin: auto;
   width: 400px;
   animation: ${fadeUp} 0.2s ease-out;
+  :before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+  }
 `;
 
 // This modal is only for the success + fail screens right now
@@ -78,7 +89,37 @@ function Modal({
   return createPortal(
     <>
       <Background onClick={() => setShow(false)}>
-        <Container>{children}</Container>
+        <Container>
+          <button
+            autoFocus={true}
+            onClick={() => setShow(false)}
+            style={{
+              position: "absolute",
+              right: 5,
+              top: -35,
+              width: 28,
+              height: 28,
+              padding: "8px",
+              borderRadius: "100%",
+            }}
+          >
+            <svg
+              viewBox="0 0 1 1"
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <path
+                d="M0,0 1,1 M0,1 1,0"
+                stroke="#ccc"
+                strokeWidth={2}
+                vectorEffect={"non-scaling-stroke"}
+              />
+            </svg>
+          </button>
+          {children}
+        </Container>
       </Background>
     </>,
     document.body
