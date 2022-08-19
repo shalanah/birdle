@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 
@@ -13,8 +13,17 @@ const Container = styled.div`
   padding: 10px 15px;
 `;
 
+// TODO: Could make nice float in and away animations
 function Toast({ text, ...props }: { text: string }) {
-  return createPortal(<Container {...props}>{text}</Container>, document.body);
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setVisible(false);
+    }, 2000);
+  }, [visible]);
+  return visible
+    ? createPortal(<Container {...props}>{text}</Container>, document.body)
+    : null;
 }
 
 export default Toast;

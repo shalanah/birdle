@@ -47,8 +47,8 @@ const Container = styled.div`
   ${({ animateIn, index }) =>
     animateIn
       ? css`
-          animation: ${Spin} 0.5s both ease-in-out;
-          animation-delay: ${index * 0.1}s;
+          animation: ${Spin} 0.6s both ease-in-out;
+          animation-delay: ${index * 0.2}s;
         `
       : ""};
   ${({ entered }: { entered: boolean }) =>

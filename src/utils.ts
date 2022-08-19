@@ -28,6 +28,16 @@ export const getIndexes = (arr: any[], item: any) => {
   return indexes;
 };
 
+// Do more testing around this
+export const getTodaysWord = (wordList) => {
+  const begin = new Date("08/18/2022"); // start date
+  // const today = new Date(Date.now()); // current date
+  const today = new Date("08/19/2022");
+  const diff = today.getTime() - begin.getTime();
+  const diffInDays = Math.floor(diff / (1000 * 3600 * 24));
+  return wordList[diffInDays % wordList.length];
+};
+
 export const getLetterStatusWord = (
   letter: string,
   actual: string[],
