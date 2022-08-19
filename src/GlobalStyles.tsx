@@ -19,8 +19,11 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     background: transparent;
     border: none;
-    /* &:not(:focus-visible) {
-      outline: none !important;
+    /* :focus {
+      outline: none;
+    }
+    :focus-visible {
+      outline: 1px solid blue;
     } */
   }
 `;

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { maxAttempts } from "./utils";
 import Word from "./GameWord";
+import useGameContext from "./hooks/useGameContext";
 
 const WordsContainer = styled.div`
   display: inline-flex;
@@ -11,7 +12,8 @@ const WordsContainer = styled.div`
 `;
 
 // TODO: Make more generic types
-function Game({ attempts, current, actual, errors }) {
+function Game() {
+  const { attempts, current, actual, errors } = useGameContext();
   const len = attempts.length;
   const attemptsLeft = maxAttempts - len - 1;
   return (

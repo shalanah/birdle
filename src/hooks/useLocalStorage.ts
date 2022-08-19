@@ -21,7 +21,6 @@ function useLocalStorage({
         }
       } else {
         // Save changes to localsStorage
-        console.log("here");
         window.localStorage.setItem(
           "attempts",
           JSON.stringify({ attempts, todaysWord })

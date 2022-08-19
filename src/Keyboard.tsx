@@ -2,6 +2,7 @@ import React from "react";
 import { getLetterStatusKeyboard, bgKeyboard, keysArray } from "./utils";
 import styled from "styled-components";
 import { ReactComponent as Delete } from "./assets/backspace.svg";
+import useGameContext from "./hooks/useGameContext";
 
 const Btn = styled.button`
   border: none;
@@ -17,15 +18,8 @@ const Btn = styled.button`
   transition: 0.2s 1.4s; /* delay so we can see flip animation first */
 `;
 
-function Keyboard({
-  attempts,
-  actual,
-  onKeyDown,
-}: {
-  attempts: string[];
-  actual: string[];
-  onKeyDown: (key: string) => void;
-}) {
+function Keyboard() {
+  const { attempts, actual, onKey } = useGameContext();
   return (
     <div
       style={{
@@ -43,7 +37,7 @@ function Keyboard({
               const status = getLetterStatusKeyboard(attempts, actual, letter);
               return (
                 <Btn
-                  onClick={() => onKeyDown(letter)}
+                  onClick={() => onKey(letter)}
                   key={letter}
                   style={{
                     background: bgKeyboard[status],

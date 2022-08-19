@@ -15,12 +15,13 @@ export const bgKeyboard = {
 
 export const fail = [
   "Not this time...",
-  "That's tough.",
+  "That's tough",
   "Looks like you came up empty this time",
   "You'll get it next time",
   "It's the lows in life that make the highs so great",
   "Making mistakes is how we grow",
   "I feel like you got this, tomorrow",
+  "Someone out there loves you",
 ];
 
 // Ordered
