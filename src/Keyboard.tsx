@@ -1,6 +1,7 @@
 import React from "react";
 import { getLetterStatusKeyboard, bgKeyboard, keysArray } from "./utils";
 import styled from "styled-components";
+import { ReactComponent as Delete } from "./assets/backspace.svg";
 
 const Btn = styled.button`
   border: none;
@@ -11,8 +12,9 @@ const Btn = styled.button`
   text-transform: uppercase;
   border-radius: 4px;
   font-size: 1rem;
+  line-height: 0;
   font-weight: bold;
-  transition: 0.2s 1s; /* delay so we can see flip animation first */
+  transition: 0.2s 1.4s; /* delay so we can see flip animation first */
 `;
 
 function Keyboard({
@@ -47,7 +49,11 @@ function Keyboard({
                     background: bgKeyboard[status],
                   }}
                 >
-                  {letter}
+                  {letter === "delete" ? (
+                    <Delete style={{ width: 30 }} />
+                  ) : (
+                    letter
+                  )}
                 </Btn>
               );
             })}

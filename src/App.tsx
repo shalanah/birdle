@@ -1,3 +1,4 @@
+/// <reference types="vite-plugin-svgr/client" />
 import React, { useEffect } from "react";
 import GlobalStyles from "./GlobalStyles";
 import { useState } from "react";
@@ -7,6 +8,10 @@ import Game from "./Game";
 import styled from "styled-components";
 import Toast from "./Toast";
 import useGetWordList from "./hooks/useGetWordList";
+import birds from "./birds";
+import { ReactComponent as Bird } from "./assets/bird.svg";
+import { ModalFail, ModalSuccess } from "./ModalsDone";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 const navHeight = 66;
 const Nav = styled.header`
@@ -22,29 +27,38 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
 `;
+const NonInteractiveOverlay = styled.div`
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+`;
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 const defaultError: string[] = [];
 const defaultAttempts: string[] = [];
 
 // TODO: Put attempts, current into context?
-// TODO: Move to reducer?
+// TODO: Make more types and interfaces
 function App() {
+  const birdWords = birds.map((bird) => bird.name);
   const [attempts, setAttempts] = useState(defaultAttempts);
   const [current, setCurrent] = useState("");
   const [errors, setErrors] = useState(defaultError);
   const allowedWords = useGetWordList();
-  const todaysWord = allowedWords ? getTodaysWord(allowedWords) : "";
-
-  const success = attempts.length && attempts.includes(todaysWord);
+  const { name: todaysWord, wiki } = getTodaysWord(birds);
+  const actual = todaysWord.split("");
+  const success = attempts.length ? attempts.includes(todaysWord) : false;
   const fail = attempts.length === maxAttempts && !success;
   const done = success || fail;
+  useLocalStorage({ todaysWord, attempts, setAttempts });
 
   // TODO: Look into ways to avoid using current in here...
   const onKey = async (key: string) => {
     if (done) return; // nothing to do... done
-
-    // TODO: Don't allow if max attempts reached
     if (alphabet.includes(key) && current.length < todaysWord.length) {
       setCurrent((prev) => prev + key);
       return;
@@ -54,18 +68,16 @@ function App() {
       return;
     }
     if (key === "enter") {
-      // Too short
       if (current.length !== todaysWord.length) {
         setErrors((prev) => [...prev, "Enter more letters"]);
         return;
       }
-
-      // Not a word
-      if (!(allowedWords || [""]).includes(current)) {
+      if (
+        !([...(allowedWords || []), ...birdWords] || [""]).includes(current)
+      ) {
         setErrors((prev) => [...prev, "Not in word list"]);
         return;
       }
-
       setAttempts((prev) => [...prev, current]);
       setCurrent("");
       return;
@@ -73,24 +85,33 @@ function App() {
   };
 
   useEffect(() => {
-    const onKeyUp = (e: KeyboardEvent) => {
-      // TODO: Ignore if meta key like ctrl, alt pressed
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.altKey || e.metaKey) return; // don't want ctrl/alt/meta
       onKey(e.key.toLowerCase());
     };
-    window.addEventListener("keyup", onKeyUp);
+    window.addEventListener("keydown", onKeyDown);
     return () => {
-      window.removeEventListener("keyup", onKeyUp);
+      window.removeEventListener("keydown", onKeyDown);
     };
   }, [onKey]);
-
-  const actual = todaysWord.split("");
 
   return (
     <>
       <GlobalStyles />
       <Main>
         <Nav>
-          <h1 style={{ margin: "auto" }}>Wordley</h1>
+          <h1
+            style={{
+              margin: "auto",
+              display: "flex",
+              alignItems: "center",
+              gap: 5,
+              justifyContent: "center",
+            }}
+          >
+            <Bird style={{ width: 50, height: 50, paddingTop: 4 }} />
+            <span style={{ paddingRight: 10 }}>Birdle</span>
+          </h1>
         </Nav>
         <Game
           errors={errors}
@@ -102,22 +123,16 @@ function App() {
         {errors.map((text, i) => {
           return <Toast key={i} text={text} style={{ top: navHeight + 15 }} />;
         })}
-        {/* Stalling while loading words */}
-        {(allowedWords || []).length === 0 && (
-          <div
-            style={{
-              position: "absolute",
-              left: 0,
-              top: 0,
-              width: "100%",
-              height: "100%",
-              background: "transparent",
-              pointerEvents: "none",
-            }}
+        {success && (
+          <ModalSuccess
+            todaysWord={todaysWord}
+            guessCount={attempts.length}
+            wiki={wiki}
           />
         )}
-        {success && <div>Success</div>}
-        {fail && <div>Fail</div>}
+        {fail && <ModalFail todaysWord={todaysWord} wiki={wiki} />}
+        {/* Stalling while loading words... could put a spinner here */}
+        {(allowedWords || []).length === 0 && <NonInteractiveOverlay />}
       </Main>
     </>
   );

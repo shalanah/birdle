@@ -13,6 +13,10 @@ export const bgKeyboard = {
   incorrect: "#3a3a3c",
 };
 
+export const getRandomFromArray = (arr: any[]) => {
+  return arr[Math.floor(Math.random() * arr.length)];
+};
+
 export const keys = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 export const keysArray = keys.map((row) => row.split(""));
 keysArray[2].unshift("enter");
@@ -29,10 +33,9 @@ export const getIndexes = (arr: any[], item: any) => {
 };
 
 // Do more testing around this
-export const getTodaysWord = (wordList) => {
-  const begin = new Date("08/18/2022"); // start date
-  // const today = new Date(Date.now()); // current date
-  const today = new Date("08/19/2022");
+export const getTodaysWord = (wordList: { name: string; wiki: string }[]) => {
+  const begin = new Date("08/18/2022"); // start date... make sure CST restart?
+  const today = new Date(Date.now()); // current date
   const diff = today.getTime() - begin.getTime();
   const diffInDays = Math.floor(diff / (1000 * 3600 * 24));
   return wordList[diffInDays % wordList.length];
@@ -45,6 +48,7 @@ export const getLetterStatusWord = (
 ) => {
   if (letter === "") return "normal";
   if (letter === actual[index]) return "correct";
+  // TODO: fix offcenter
   if ([...actual.slice(0, index), ...actual.slice(index + 1)].includes(letter))
     return "offcenter";
   else return "incorrect";
@@ -70,7 +74,6 @@ export const getLetterStatusKeyboard = (
     );
     if (sharesAnIndex) return "correct";
 
-    // Otherwise it exists but in the incorrect place - could be correct in another attempt
     status = "offcenter";
   }
 
