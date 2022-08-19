@@ -12,7 +12,7 @@ const Btn = styled.button`
   border-radius: 4px;
   font-size: 1rem;
   font-weight: bold;
-  transition: 0.2s;
+  transition: 0.2s 0.8s; /* delay so we can see flip animation first */
 `;
 
 function Keyboard({

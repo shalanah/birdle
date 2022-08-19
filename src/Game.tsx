@@ -10,7 +10,8 @@ const WordsContainer = styled.div`
   margin: auto;
 `;
 
-function Game({ attempts, current, actual }) {
+// TODO: Make more generic types
+function Game({ attempts, current, actual, errors }) {
   const len = attempts.length;
   const attemptsLeft = maxAttempts - len - 1;
   return (
@@ -21,7 +22,9 @@ function Game({ attempts, current, actual }) {
           <Word key={i} guess={guess} actual={actual} />
         ))}
         {/* 2. Current */}
-        {len < maxAttempts && <Word key={len} guess={current} />}
+        {len < maxAttempts && (
+          <Word key={len} guess={current} errorCount={errors.length} />
+        )}
         {/* 3. Empty rows */}
         {Array.from({ length: attemptsLeft }).map((_, i) => (
           <Word key={i + 1 + len} guess={""} />
