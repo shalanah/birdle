@@ -17,6 +17,21 @@ const Nav = styled.header`
   display: flex;
   font-size: 16px;
   line-height: 1;
+  h1 {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+  }
+  svg {
+    width: 50px;
+    height: 50px;
+    padding-top: 4px;
+  }
+  span {
+    padding-right: 10px;
+  }
 `;
 const Main = styled.main`
   height: 100%;
@@ -42,17 +57,9 @@ function App() {
       <GlobalStyles />
       <Main>
         <Nav>
-          <h1
-            style={{
-              margin: "auto",
-              display: "flex",
-              alignItems: "center",
-              gap: 5,
-              justifyContent: "center",
-            }}
-          >
-            <Bird style={{ width: 50, height: 50, paddingTop: 4 }} />
-            <span style={{ paddingRight: 10 }}>Birdle</span>
+          <h1>
+            <Bird />
+            <span>Birdle</span>
           </h1>
         </Nav>
         <Game />

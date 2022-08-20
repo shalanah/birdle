@@ -10,7 +10,6 @@ import useGetWordList from "./useGetWordList";
 import birds from "../birds";
 import useLocalStorage from "./useLocalStorage";
 
-const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 const defaultError: string[] = [];
 const defaultAttempts: string[] = [];
 
@@ -45,7 +44,7 @@ export const GameContextProvider = ({ children }: { children: ReactNode }) => {
   // TODO: Look into ways to avoid using current in here...
   const onKey = async (key: string) => {
     if (done) return; // nothing to do... done
-    if (alphabet.includes(key) && current.length < todaysWord.length) {
+    if (key.match(/[a-z]/g) && current.length < todaysWord.length) {
       setCurrent((prev) => prev + key);
       return;
     }
