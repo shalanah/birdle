@@ -107,7 +107,7 @@ export const ModalFail = ({
         wiki={wiki}
         img={
           <img
-            src={"/nest.png"}
+            src={"/nest.jpg"}
             style={{
               margin: "10px -15px 40px -15px",
               width: "calc(100% + 30px)",
