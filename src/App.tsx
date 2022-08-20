@@ -1,38 +1,14 @@
-/// <reference types="vite-plugin-svgr/client" />
 import React from "react";
 import GlobalStyles from "./GlobalStyles";
 import Keyboard from "./Keyboard";
 import Game from "./Game";
 import styled from "styled-components";
 import Toast from "./Toast";
-import { ReactComponent as Bird } from "./assets/bird.svg";
 import { ModalFail, ModalSuccess } from "./ModalsDone";
 import useGameContext from "./hooks/useGameContext";
+import { navHeight } from "./utils";
+import Nav from "./Nav";
 
-const navHeight = 66;
-const Nav = styled.header`
-  font-family: Kurale, sans-serif;
-  height: ${navHeight}px;
-  border-bottom: 1px solid #3a3a3c;
-  display: flex;
-  font-size: 16px;
-  line-height: 1;
-  h1 {
-    margin: auto;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    justify-content: center;
-  }
-  svg {
-    width: 50px;
-    height: 50px;
-    padding-top: 4px;
-  }
-  span {
-    padding-right: 10px;
-  }
-`;
 const Main = styled.main`
   height: 100%;
   display: flex;
@@ -49,6 +25,7 @@ const NonInteractiveOverlay = styled.div`
 `;
 
 // TODO: Make more types and interfaces
+// TODO: Switch from arrays to string functions
 function App() {
   const { errors, attempts, todaysWord, allowedWords, wiki, fail, success } =
     useGameContext();
@@ -56,12 +33,7 @@ function App() {
     <>
       <GlobalStyles />
       <Main>
-        <Nav>
-          <h1>
-            <Bird />
-            <span>Birdle</span>
-          </h1>
-        </Nav>
+        <Nav />
         <Game />
         <Keyboard />
         {errors.map((text, i) => {

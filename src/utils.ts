@@ -1,5 +1,6 @@
 export const maxAttempts = 6;
 export const wordLength = 5;
+export const navHeight = 66;
 export const bg = {
   normal: "#121213",
   correct: "#6aaa64",
