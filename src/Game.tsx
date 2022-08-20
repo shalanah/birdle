@@ -20,16 +20,16 @@ function Game() {
     <div style={{ display: "flex", flex: 1 }}>
       <WordsContainer>
         {/* 1. Attempts */}
-        {attempts.map((guess, i) => (
-          <Word key={i} guess={guess} actual={actual} />
+        {attempts.map((attempt, i) => (
+          <Word key={i} attempt={attempt} actual={actual} />
         ))}
         {/* 2. Current */}
         {len < maxAttempts && (
-          <Word key={len} guess={current} errorCount={errors.length} />
+          <Word key={len} attempt={current} errorCount={errors.length} />
         )}
         {/* 3. Empty rows */}
         {Array.from({ length: attemptsLeft }).map((_, i) => (
-          <Word key={i + 1 + len} guess={""} />
+          <Word key={i + 1 + len} attempt={""} />
         ))}
       </WordsContainer>
     </div>

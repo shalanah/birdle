@@ -20,7 +20,7 @@ const shake = keyframes`
   }
 `;
 
-const Word = styled.div`
+const Word = styled.div<{ showShake: boolean }>`
   display: flex;
   gap: 5px;
   ${({ showShake }) =>
@@ -35,15 +35,16 @@ const Word = styled.div`
 const emptyWord = Array(wordLength).fill("");
 
 function GameWord({
-  guess = "",
+  attempt = "",
   actual,
   errorCount = 0,
 }: {
-  guess: string;
+  attempt?: string;
   actual?: string[];
+  errorCount?: number;
 }) {
   const prevErrorCount = usePrevious(errorCount);
-  const letters = guess.split("");
+  const letters = attempt.split("");
   const showShake = prevErrorCount !== errorCount;
   return (
     <Word showShake={showShake} key={errorCount}>

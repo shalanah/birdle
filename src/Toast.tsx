@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 // TODO: Could make nice float in and away animations
-function Toast({ text, ...props }: { text: string }) {
+function Toast({ text, ...props }: { text: string } | any) {
   const [visible, setVisible] = useState(true);
   useEffect(() => {
     setTimeout(() => {

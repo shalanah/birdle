@@ -32,7 +32,11 @@ const Spin = keyframes`
   }
 `;
 
-const Container = styled.div`
+const Container = styled.div<{
+  index: number;
+  animateIn: boolean;
+  entered: boolean;
+}>`
   border: 2px solid transparent;
   border-radius: 4px;
   text-transform: uppercase;
@@ -51,7 +55,7 @@ const Container = styled.div`
           animation-delay: ${index * 0.2}s;
         `
       : ""};
-  ${({ entered }: { entered: boolean }) =>
+  ${({ entered }) =>
     entered
       ? css`
           animation: ${Bounce} 0.1s both ease-out;
@@ -64,7 +68,13 @@ function Letter({
   status = "normal",
   animateIn = false,
   index = 0,
+}: {
+  letter: string;
+  status: string;
+  animateIn?: boolean;
+  index: number;
 }) {
+  const varBg = { "--bg": bg[status] } as React.CSSProperties;
   return (
     <Container
       index={index}
@@ -73,8 +83,8 @@ function Letter({
       style={{
         borderColor:
           status === "normal" ? (letter ? "#565758" : "#3a3a3c") : "",
-        background: bg.normal,
-        "--bg": bg[status],
+        background: bg["normal"],
+        ...varBg,
       }}
     >
       {letter}

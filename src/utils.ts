@@ -7,10 +7,10 @@ export const bg = {
   incorrect: "#3a3a3c",
 };
 export const bgKeyboard = {
-  normal: "#818384",
+  normal: "#3a3a3c",
   correct: "#6aaa64",
   offcenter: "#b59f3b",
-  incorrect: "#3a3a3c",
+  incorrect: "#818384",
 };
 
 export const fail = [
