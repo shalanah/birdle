@@ -83,6 +83,7 @@ export const ModalSuccess = ({
         heading={congrats[guessCount - 1]}
         img={
           <Birds
+            alt={`${todaysWord.length + 1 - guessCount} cute birds`}
             guessCount={guessCount}
             style={{
               margin: "40px -15px 60px -15px",
@@ -110,6 +111,7 @@ export const ModalFail = ({
         wiki={wiki}
         img={
           <img
+            alt={"empty nest"}
             src={src}
             style={{
               margin: "10px -15px 40px -15px",

@@ -32,7 +32,7 @@ function Nav() {
   return (
     <Container>
       <h1>
-        <Bird />
+        <Bird title="cute brown bird" />
         <span>Birdle</span>
       </h1>
     </Container>
