@@ -22,3 +22,7 @@ Use five letter words to guess the bird of the day. (for-fun wordle clone go to 
 <img style="float: left" src="/screenshots/4.png" width="250" height="414" />
 <img style="float: left" src="/screenshots/5.png" width="250" height="414" />
 </div>
+
+## Credits
+
+Used Shutterstock photos for the bird images - I had some leftover credits from another side project and used to download and have permission to use.
