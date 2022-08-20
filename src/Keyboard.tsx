@@ -15,7 +15,11 @@ const Btn = styled.button`
   font-size: 1rem;
   line-height: 0;
   font-weight: bold;
-  transition: 0.2s 1.4s; /* delay so we can see flip animation first */
+  transition: background 0.2s 1.4s; /* delay so we can see flip animation first */
+  @media (max-width: 768px) {
+    min-width: 30px;
+    height: 40px;
+  }
 `;
 
 function Keyboard() {
