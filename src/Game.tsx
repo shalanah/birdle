@@ -11,7 +11,6 @@ const WordsContainer = styled.div`
   margin: auto;
 `;
 
-// TODO: Make more generic types
 function Game() {
   const { attempts, current, actual, errors } = useGameContext();
   const len = attempts.length;

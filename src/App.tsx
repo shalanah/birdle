@@ -14,15 +14,6 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
 `;
-const NonInteractiveOverlay = styled.div`
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  pointer-events: none;
-`;
 
 // TODO: Make more types and interfaces
 // TODO: Switch from arrays to string functions
@@ -36,9 +27,11 @@ function App() {
         <Nav />
         <Game />
         <Keyboard />
+        {/* Toasts */}
         {errors.map((text, i) => {
           return <Toast key={i} text={text} style={{ top: navHeight + 15 }} />;
         })}
+        {/* Success */}
         {success && (
           <ModalSuccess
             todaysWord={todaysWord}
@@ -46,9 +39,12 @@ function App() {
             wiki={wiki}
           />
         )}
+        {/* Fail */}
         {fail && <ModalFail todaysWord={todaysWord} wiki={wiki} />}
-        {/* Stalling while loading words... could put a spinner here */}
-        {(allowedWords || []).length === 0 && <NonInteractiveOverlay />}
+        {/* Loading - Stalling while loading words... could put a spinner here */}
+        {(allowedWords || []).length === 0 && (
+          <div className="pos-full" style={{ pointerEvents: "none" }} />
+        )}
       </Main>
     </>
   );

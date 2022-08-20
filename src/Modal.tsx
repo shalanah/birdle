@@ -23,8 +23,8 @@ const fadeIn = keyframes`
 
 const Background = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   width: 100%;
   height: 100%;
   background: rgba(20, 20, 20, 0.7);

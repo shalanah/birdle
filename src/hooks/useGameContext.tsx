@@ -57,9 +57,7 @@ export const GameContextProvider = ({ children }: { children: ReactNode }) => {
         setErrors((prev) => [...prev, "Enter more letters"]);
         return;
       }
-      if (
-        !([...(allowedWords || []), ...birdWords] || [""]).includes(current)
-      ) {
+      if (![...(allowedWords || []), ...birdWords].includes(current)) {
         setErrors((prev) => [...prev, "Not in word list"]);
         return;
       }

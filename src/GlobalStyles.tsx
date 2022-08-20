@@ -25,6 +25,15 @@ const GlobalStyles = createGlobalStyle`
     :focus-visible {
       outline: 1px solid blue;
     } */
+
+    /* Utility function */
+    .pos-full {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
 

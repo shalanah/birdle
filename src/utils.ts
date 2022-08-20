@@ -1,12 +1,14 @@
 export const maxAttempts = 6;
 export const wordLength = 5;
 export const navHeight = 66;
+
 export const bg = {
   normal: "#121213",
   correct: "#6aaa64",
   offcenter: "#b59f3b",
   incorrect: "#3a3a3c",
 };
+
 export const bgKeyboard = {
   normal: "#3a3a3c",
   correct: "#6aaa64",
