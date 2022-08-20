@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import Modal from "./Modal";
 import Birds from "./assets/Birds";
 import { getRandomFromArray, congrats, fail } from "./utils";
+import useImage from "react-use-image";
 
 const Shared = ({
   todaysWord,
@@ -101,13 +102,15 @@ export const ModalFail = ({
   todaysWord: string;
   wiki: string;
 }) => {
+  const src = "/nest.jpg";
+  useImage(src); // preload image delay is probably long enough also that it should be loaded
   return (
     <Modal delay={2000}>
       <Shared
         wiki={wiki}
         img={
           <img
-            src={"/nest.jpg"}
+            src={src}
             style={{
               margin: "10px -15px 40px -15px",
               width: "calc(100% + 30px)",

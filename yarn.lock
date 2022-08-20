@@ -936,6 +936,11 @@ react-refresh@^0.14.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.14.0.tgz#4e02825378a5f227079554d4284889354e5f553e"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
+react-use-image@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/react-use-image/-/react-use-image-0.2.3.tgz#ec270a58063cf91535be131b499ba0ac560dd223"
+  integrity sha512-PWWvj3sZkcB1ydig3kSym+JHK7zOMXh0W+epc5QCxzVBTnMFVXUg3zGH+19rWVO/qD2rTy7gMZuk/WGmE75eeA==
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
@@ -1050,10 +1055,10 @@ vite-plugin-svgr@^2.2.1:
     "@rollup/pluginutils" "^4.2.1"
     "@svgr/core" "^6.3.1"
 
-vite@^3.0.7:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.8.tgz#aa095ad8e3e5da46d9ec7e878f262678965d6531"
-  integrity sha512-AOZ4eN7mrkJiOLuw8IA7piS4IdOQyQCA81GxGsAQvAZzMRi9ZwGB3TOaYsj4uLAWK46T5L4AfQ6InNGlxX30IQ==
+vite@^3.0.8:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.9.tgz#45fac22c2a5290a970f23d66c1aef56a04be8a30"
+  integrity sha512-waYABTM+G6DBTCpYAxvevpG50UOlZuynR0ckTK5PawNVt7ebX6X7wNXHaGIO6wYYFXSM7/WcuFuO2QzhBB6aMw==
   dependencies:
     esbuild "^0.14.47"
     postcss "^8.4.16"
