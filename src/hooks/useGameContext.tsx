@@ -44,7 +44,11 @@ export const GameContextProvider = ({ children }: { children: ReactNode }) => {
   // TODO: Look into ways to avoid using current in here...
   const onKey = async (key: string) => {
     if (done) return; // nothing to do... done
-    if (key.match(/[a-z]/g) && current.length < todaysWord.length) {
+    if (
+      key.length === 1 &&
+      key.match(/[a-z]/i) &&
+      current.length < todaysWord.length
+    ) {
       setCurrent((prev) => prev + key);
       return;
     }

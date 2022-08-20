@@ -1,6 +1,5 @@
 import Chance from "chance";
 
-// Add a bunch of 4-letter birds and add an "s"?
 const birds = [
   { name: "booby", wiki: "booby" },
   {
@@ -44,7 +43,37 @@ const birds = [
   { name: "vireo", wiki: "vireo" },
 ];
 
+// 5 letter plurals
+const plurals = [
+  { name: "bazas", wiki: "Aviceda" },
+  { name: "chats", wiki: "Chat_(bird)" },
+  { name: "couas", wiki: "Coua" },
+  { name: "crows", wiki: "crow" },
+  { name: "dodos", wiki: "Dodo" },
+  { name: "doves", wiki: "Columbidae" },
+  { name: "ducks", wiki: "ducks" },
+  { name: "gulls", wiki: "Gull" },
+  { name: "hawks", wiki: "hawk" },
+  { name: "iiwis", wiki: "ʻIʻiwi" },
+  { name: "incas", wiki: "Inca_tern" },
+  { name: "ioras", wiki: "Common_iora" },
+  { name: "kites", wiki: "Kite_(bird)" },
+  { name: "kiwis", wiki: "Kiwi_(bird)" },
+  { name: "larks", wiki: "lark" },
+  { name: "loons", wiki: "Loon" },
+  { name: "nenes", wiki: "Nene_(bird)" },
+  { name: "rooks", wiki: "Rook_(bird)" },
+  { name: "ruffs", wiki: "Ruff_(bird)" },
+  { name: "swans", wiki: "swan" },
+  { name: "skuas", wiki: "skua" },
+  { name: "smews", wiki: "smew" },
+  { name: "soras", wiki: "Sora_(bird)" },
+  { name: "terns", wiki: "tern" },
+  { name: "wekas", wiki: "Weka" },
+  { name: "wrens", wiki: "wren" },
+];
+
 // Don't want in alphabetical order... also this will be the same mix every time
 const chance = new Chance(124);
 
-export default chance.shuffle(birds);
+export default chance.shuffle([...birds, ...plurals]);
