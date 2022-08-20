@@ -15,8 +15,10 @@ Use five letter words to guess the bird of the day. (for-fun wordle clone go to 
 
 ## Screenshots
 
-<img src="/screenshots/1.png" width="250" height="386" />
-<img src="/screenshots/2.png" width="250" height="386" />
-<img src="/screenshots/3.png" width="250" height="386" />
-<img src="/screenshots/4.png" width="250" height="386" />
-<img src="/screenshots/5.png" width="250" height="386" />
+<div>
+<img style="float: left" src="/screenshots/1.png" width="250" height="386" />
+<img style="float: left" src="/screenshots/2.png" width="250" height="386" />
+<img style="float: left" src="/screenshots/3.png" width="250" height="386" />
+<img style="float: left" src="/screenshots/4.png" width="250" height="386" />
+<img style="float: left" src="/screenshots/5.png" width="250" height="386" />
+</div>
