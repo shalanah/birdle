@@ -16,9 +16,6 @@ const Word = styled.div<{ showShake: boolean }>`
       : ""}
 `;
 
-// Empty word doesn't seem necessary... just an array of 5 will do
-const emptyWord = Array(wordLength).fill("");
-
 function GameWord({
   attempt = "",
   actual,
@@ -29,11 +26,11 @@ function GameWord({
   errorCount?: number;
 }) {
   const prevErrorCount = usePrevious(errorCount);
-  const letters = attempt.split("");
   const showShake = prevErrorCount !== errorCount;
+  const letters = attempt.split("");
   return (
     <Word showShake={showShake} key={errorCount}>
-      {emptyWord.map((_, i) => {
+      {Array.from({ length: wordLength }).map((_, i) => {
         const letter = letters[i] || "";
         const status = actual
           ? getLetterStatusWord(letters, actual, i)

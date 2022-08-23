@@ -20,10 +20,10 @@ interface GameContextInterface {
   actual: string[];
   onKey: (key: string) => void;
   todaysWord: string;
-  allowedWords?: string;
   wiki: string;
   fail: boolean;
   success: boolean;
+  allowedWordsLoading: boolean;
 }
 
 // Game state... could probably be broken out into smaller files / hooks
@@ -91,7 +91,7 @@ export const GameContextProvider = ({ children }: { children: ReactNode }) => {
         actual,
         onKey,
         todaysWord,
-        allowedWords,
+        allowedWordsLoading: (allowedWords || []).length === 0,
         wiki,
         fail,
         success,

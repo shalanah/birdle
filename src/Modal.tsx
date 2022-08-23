@@ -86,12 +86,14 @@ function Modal({
             }}
           >
             <svg
+              role={"img"}
               viewBox="0 0 1 1"
               style={{
                 width: "100%",
                 height: "100%",
               }}
             >
+              <title>Close modal</title>
               <path
                 d="M0,0 1,1 M0,1 1,0"
                 stroke="#ccc"

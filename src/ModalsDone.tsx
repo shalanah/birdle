@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import Birds from "./assets/Birds";
 import { getRandomFromArray, congrats, fail } from "./utils";
 import useImage from "react-use-image";
+import useGameContext from "./hooks/useGameContext";
 
 const Shared = ({
   todaysWord,
@@ -70,11 +71,9 @@ const Shared = ({
   );
 };
 
-export const ModalSuccess = ({
-  todaysWord = "",
-  guessCount = 6,
-  wiki = "",
-}) => {
+export const ModalSuccess = () => {
+  const { attempts, todaysWord, wiki } = useGameContext();
+  const guessCount = attempts.length;
   return (
     <Modal delay={2000}>
       <Shared
@@ -96,13 +95,8 @@ export const ModalSuccess = ({
   );
 };
 
-export const ModalFail = ({
-  todaysWord,
-  wiki,
-}: {
-  todaysWord: string;
-  wiki: string;
-}) => {
+export const ModalFail = () => {
+  const { todaysWord, wiki } = useGameContext();
   const src = "/nest.jpg";
   useImage(src); // preload image delay is probably long enough also that it should be loaded
   return (

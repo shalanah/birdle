@@ -18,8 +18,7 @@ const Main = styled.main`
 // TODO: Make more types and interfaces
 // TODO: Switch from arrays to string functions
 function App() {
-  const { errors, attempts, todaysWord, allowedWords, wiki, fail, success } =
-    useGameContext();
+  const { errors, allowedWordsLoading, fail, success } = useGameContext();
   return (
     <>
       <GlobalStyles />
@@ -27,22 +26,13 @@ function App() {
         <Nav />
         <Game />
         <Keyboard />
-        {/* Toasts */}
-        {errors.map((text, i) => {
-          return <Toast key={i} text={text} style={{ top: navHeight + 15 }} />;
+        {errors.map((error, i) => {
+          return <Toast key={i} text={error} style={{ top: navHeight + 15 }} />;
         })}
-        {/* Success */}
-        {success && (
-          <ModalSuccess
-            todaysWord={todaysWord}
-            guessCount={attempts.length}
-            wiki={wiki}
-          />
-        )}
-        {/* Fail */}
-        {fail && <ModalFail todaysWord={todaysWord} wiki={wiki} />}
-        {/* Loading - Stalling while loading words... could put a spinner here */}
-        {(allowedWords || []).length === 0 && (
+        {success && <ModalSuccess />}
+        {fail && <ModalFail />}
+        {/* Stalling while loading words... could put a spinner here */}
+        {allowedWordsLoading && (
           <div className="pos-full" style={{ pointerEvents: "none" }} />
         )}
       </Main>
