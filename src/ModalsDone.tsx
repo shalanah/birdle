@@ -5,7 +5,8 @@ import { getRandomFromArray, congrats, fail } from "./utils";
 import useImage from "react-use-image";
 import useGameContext from "./hooks/useGameContext";
 
-const Shared = ({
+// Used for both success + fail modals
+const ModalDone = ({
   todaysWord,
   heading,
   img,
@@ -76,7 +77,7 @@ export const ModalSuccess = () => {
   const guessCount = attempts.length;
   return (
     <Modal delay={2000}>
-      <Shared
+      <ModalDone
         wiki={wiki}
         todaysWord={todaysWord}
         heading={congrats[guessCount - 1]}
@@ -101,7 +102,7 @@ export const ModalFail = () => {
   useImage(src); // preload image delay is probably long enough also that it should be loaded
   return (
     <Modal delay={2000}>
-      <Shared
+      <ModalDone
         wiki={wiki}
         img={
           <img
