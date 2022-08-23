@@ -14,16 +14,16 @@ const defaultError: string[] = [];
 const defaultAttempts: string[] = [];
 
 interface GameContextInterface {
-  errors: string[];
+  actual: string[];
+  allowedWordsLoading: boolean;
   attempts: string[];
   current?: string;
-  actual: string[];
+  errors: string[];
+  fail: boolean;
   onKey: (key: string) => void;
+  success: boolean;
   todaysWord: string;
   wiki: string;
-  fail: boolean;
-  success: boolean;
-  allowedWordsLoading: boolean;
 }
 
 // Game state... could probably be broken out into smaller files / hooks
@@ -35,11 +35,11 @@ export const GameContextProvider = ({ children }: { children: ReactNode }) => {
   const [errors, setErrors] = useState(defaultError);
   const allowedWords = useGetWordList();
   const { name: todaysWord, wiki } = getTodaysWord(birds);
-  const actual = todaysWord.split("");
+  useLocalStorage({ todaysWord, attempts, setAttempts });
+
   const success = attempts.length ? attempts.includes(todaysWord) : false;
   const fail = attempts.length === maxAttempts && !success;
   const done = success || fail;
-  useLocalStorage({ todaysWord, attempts, setAttempts });
 
   // TODO: Look into ways to avoid using current in here...
   const onKey = async (key: string) => {
@@ -85,16 +85,16 @@ export const GameContextProvider = ({ children }: { children: ReactNode }) => {
   return (
     <GameContext.Provider
       value={{
-        errors,
+        actual: todaysWord.split(""),
+        allowedWordsLoading: (allowedWords || []).length === 0,
         attempts,
         current,
-        actual,
-        onKey,
-        todaysWord,
-        allowedWordsLoading: (allowedWords || []).length === 0,
-        wiki,
+        errors,
         fail,
+        onKey,
         success,
+        todaysWord,
+        wiki,
       }}
     >
       {children}
