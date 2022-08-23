@@ -1,25 +1,7 @@
 import React, { useState, ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
-import styled, { keyframes } from "styled-components";
-
-const fadeUp = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100%{
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
+import styled from "styled-components";
+import { FadeIn, FadeUp } from "./keyframes";
 
 const Background = styled.div`
   position: fixed;
@@ -29,7 +11,7 @@ const Background = styled.div`
   height: 100%;
   background: rgba(20, 20, 20, 0.7);
   display: flex;
-  animation: ${fadeIn} 0.3s ease-in-out;
+  animation: ${FadeIn} 0.3s ease-in-out;
 `;
 const Container = styled.div`
   position: relative;
@@ -37,7 +19,7 @@ const Container = styled.div`
   color: #222;
   margin: auto;
   width: 400px;
-  animation: ${fadeUp} 0.2s ease-out;
+  animation: ${FadeUp} 0.2s ease-out;
   :before {
     content: "";
     z-index: -1;

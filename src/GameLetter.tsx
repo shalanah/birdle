@@ -1,36 +1,7 @@
 import React from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled, { css } from "styled-components";
 import { bg } from "./utils";
-
-const Bounce = keyframes`
-  0% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
-
-const Spin = keyframes`
-  0% {
-    transform: rotateZ(0);
-    background: ${bg.normal};
-    border-color: #565758;
-  }
-  49.99999% {
-    background: ${bg.normal};
-    border-color: #565758;
-  }
-  50% {
-    background: var(--bg);
-    transform: rotateX(90deg);
-  }
-  100% {
-    border-color: transparent;
-    background: var(--bg);
-    transform: rotateZ(0deg);
-  }
-`;
+import { Spin, Bounce } from "./keyframes";
 
 const Container = styled.div<{
   index: number;

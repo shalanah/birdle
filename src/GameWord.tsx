@@ -1,24 +1,9 @@
 import React from "react";
 import { wordLength, getLetterStatusWord } from "./utils";
 import Letter from "./GameLetter";
-import styled, { keyframes, css } from "styled-components";
+import styled, { css } from "styled-components";
 import usePrevious from "./hooks/usePrevious";
-
-// Inspired by https://css-tricks.com/snippets/css/shake-css-keyframe-animation/
-const shake = keyframes`
-  10%, 90% {
-    transform: translate(-5px, 0);
-  }
-  20%, 80% {
-    transform: translate(5px, 0);
-  }
-  30%, 50%, 70% {
-    transform: translate(-5px, 0);
-  }
-  40%, 60% {
-    transform: translate(5px, 0);
-  }
-`;
+import { Shake } from "./keyframes";
 
 const Word = styled.div<{ showShake: boolean }>`
   display: flex;
@@ -26,7 +11,7 @@ const Word = styled.div<{ showShake: boolean }>`
   ${({ showShake }) =>
     showShake
       ? css`
-          animation: ${shake} 0.65s linear;
+          animation: ${Shake} 0.65s linear;
         `
       : ""}
 `;
