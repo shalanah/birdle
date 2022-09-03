@@ -1,6 +1,6 @@
 # Birdle
 
-Use five letter words to guess the bird of the day. (for-fun wordle clone go to https://www.nytimes.com/games/wordle/index.html to play the real game)
+Use five letter words to guess the bird of the day.
 
 ## Fun firsts
 
