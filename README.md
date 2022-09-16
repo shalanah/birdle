@@ -10,7 +10,6 @@ Use five letter words to guess the bird of the day.
 
 - Add tracking daily progress
 - Build out rest of UI around game (tracking, streaks, about, github link etc)
-- Make responsive
 - Update color scheme to be more bird friendly
 
 ## Screenshots
